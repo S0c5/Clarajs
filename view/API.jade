@@ -1,0 +1,17 @@
+html(lang="en")
+    head
+        meta(name="viewport",content="initial-scale = 1.0,maximum-scale = 1.0")
+        title= "Api Documentation"
+
+        // link(rel='stylesheet', href='/styles.css')
+        style
+            include styles.css
+    body
+        div.title
+            h1 Api - documentation
+        for endPoint in endPoints
+            for method in endPoint.method
+                div.endPoint
+                    span.method #{method.method.toUpperCase().replace('_','')}
+                    span.link
+                        a(href="#{endPoint.path}") #{endPoint.path}

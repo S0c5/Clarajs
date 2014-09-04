@@ -1,0 +1,33 @@
+{
+  "name": "ClaraDocJs",
+  "version": "0.0.1",
+  "description": "Auto generate API Documentation from Express Js App.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/S0c5/ClaraDocjs.git"
+  },
+  "keywords": [
+    "Api",
+    "documentation",
+    "ExpressJs",
+    "Restful",
+    "Api",
+    "Autogenerate",
+    "Documentation"
+  ],
+  "author": "S0c5 (david barinas)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S0c5/ClaraDocjs/issues"
+  },
+  "homepage": "https://github.com/S0c5/ClaraDocjs",
+  "dependencies": {
+    "methods": "^1.1.0",
+    "express": "^4.8.7",
+    "jade": "^1.6.0"
+  }
+}
