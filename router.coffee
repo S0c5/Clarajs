@@ -40,7 +40,6 @@ class Router
 
 
   route: (path) ->
-
     @_route = @_router_.route path
     return @_routeMiddleWare
 

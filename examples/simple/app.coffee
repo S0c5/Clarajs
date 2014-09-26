@@ -1,6 +1,6 @@
 app = do require 'express'
 ClaraDoc = require '../../index'
-ClaraDoc.bindApp(app);
+#ClaraDoc.bindApp(app);
 
 
 
@@ -12,13 +12,18 @@ app.set('view engine', 'jade');
 # Routue Enroute
 #
 
-app.route '/'
-.get (req, res)->
-  res.json {msg: "welcome to API TEST"}
 
+router = require('express').Router()
 
+router.route '/bind'
+.get (req, res, next)->
+      req.user = "David barinas"
+      next()
+    ,(req, res)->
+      res.json {msg: req.user}
 
-app.get '/docs', ClaraDoc.generate(app)
+app.use router
+app.get '/docs', ClaraDoc.generate(router)
 
 
 app.listen(3000, ()->

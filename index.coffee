@@ -1,6 +1,10 @@
 methods = require 'methods'
 jade = require 'jade'
 path = require 'path'
+Object.prototype.getName = ()->
+  funcNameRegex = /function (.{1,})\(/;
+  results = (funcNameRegex).exec((this).constructor.toString());
+  return if (results && results.length > 1) then results[1] else "";
 
 
 class ClaraDoc
@@ -89,9 +93,18 @@ class ClaraDoc
       res.send jade.renderFile(__dirname+'/view/API.jade', {endPoints: docs})
 
   # generate from app
-  @generate = (app)->
+  @generate = (router)->
 
-    router = app._router.stack
+    if  !router.stack?
+      unless router._router?
+        throw new Error("You need specify ExpressJS App or Router")
+
+      router = router._router.stack
+    else
+      router = router.stack
+    unless router?
+      throw new Error("You need specify ExpressJS App or router")
+
     @fn(@document(router))
 
 
